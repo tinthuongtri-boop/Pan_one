@@ -1,0 +1,39 @@
+amcl:
+  ros__parameters:
+    use_sim_time: True
+    #tọa độ
+    base_frame_id: "base_link"
+    odom_frame_id: "odom"
+    global_frame_id: "map"
+    scan_topic: "/scan"
+
+    # cấu hình hạt
+    min_particles: 500
+    max_particles: 2000
+
+    #cập nhật vị trí
+    update_min_d: 0.2 #robot đi được 0.2m thì tính lại 1 lần
+    update_min_a: 0.2 #robot xoay được 0.2 rad thì tính toán lại 1 lần
+
+    #thông số laser
+    laser_model_type: "likelihood_field"
+    laser_max_range: 20.0
+    laser_min_range: -1.0
+    laser_z_hit: 0.5
+    laser_z_rand: 0.5
+    laser_sigma_hit: 0.2
+
+    # motion model
+    robot_model_type: "nav2_amcl::DifferentialMotionModel"
+    alpha1: 0.2   # Nhiễu góc quay do quay (vd: quay xe nhưng bị trượt)
+    alpha2: 0.2   # Nhiễu góc quay do đi thẳng
+    alpha3: 0.2   # Nhiễu đi thẳng do đi thẳng 
+    alpha4: 0.2   # Nhiễu đi thẳng do quay
+
+    #cấu hình lưu vị trí
+    set_initial_pose: True  # Nếu True, nó sẽ lấy initial_pose dưới đây làm điểm bắt đầu
+    initial_pose:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      yaw: 0.0
